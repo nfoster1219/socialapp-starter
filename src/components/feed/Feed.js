@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 //import our service
 import DataService from '../../dataService';
+
+import UserCard from '../userCard/UserCard';
+import AvatarImage from '../Avatarimage/avatarImage';
 import '../feed/Feed.css';
 
 class Feed extends Component {
@@ -53,18 +56,27 @@ class Feed extends Component {
 
     render() {
         return (
-            <div className="feed">
-                
-                {this.state.feed.map(message =>
-                    <ul>
-                        <h3>{ message.username }</h3><p>{message.text}</p><h5>{message.createdAt}</h5>
-                    </ul>)}
-                
-   
-                {/* {this.state.feed.map(message =>
-                    <li></li>)} */}
-
-            </div>
+            <div className="avatar">
+                <p>AVATAR</p>
+                <UserCard />
+            {/* </div> */}
+            {/* // grab avatar pic here */}
+    
+  
+        <div>
+            
+                    {/* <img src={this.avatarLocation}></img> */}
+                    {this.state.feed.map(message =>
+                        <ul className="feed">
+                            <AvatarImage username={message.username} />
+                            <h3>{ message.username }</h3><h5>{message.createdAt}</h5><p>{message.text}</p>
+                        </ul>)}
+                    
+    
+                    {/* {this.state.feed.map(message =>
+                        <li></li>)} */}
+</div>
+                </div>
         )
     }
 }

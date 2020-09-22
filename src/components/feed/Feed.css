@@ -1,6 +1,16 @@
 .feed {
-margin-bottom: 20px;
+   
+    position: relative;
+    margin-bottom: 20px;
     padding: 5px;
-    border: 1px solid grey;
+    border: 1px solid darkgrey;
     list-style-type: none;
+    background-color: lightskyblue;
+    border-radius: 1em;
+    
+}
+.ul {
+    margin-bottom: 2px;
+    padding-left: 5px;
+    border: 2px solid darkgreen;
 }
