@@ -6,6 +6,7 @@ import DataService from '../../dataService';
 import UserCard from '../userCard/UserCard';
 import AvatarImage from '../Avatarimage/avatarImage';
 import '../feed/Feed.css';
+// import Scroll from './Scroll'
 
 class Feed extends Component {
     //set our initial state and set up our service as this.client on this component
@@ -15,11 +16,11 @@ class Feed extends Component {
         this.state = {
             feed: [],
             userfeed: [],
-            createdAt: ""
+            createdAt: "",
+            likes: [],
         }
     }
-
-
+    //handleLikes()
 
     //get a new message from the API and add it to the data object in state
     getMessages() { //catalyst to change state by getting messages//
@@ -39,12 +40,6 @@ class Feed extends Component {
             console.log(result.data.messages)
         })
     }
-
-    // getTime = () => {
-    //     //get all message and filter
-    //     const postTime = JSON.parse(userfeed.getItem("createdAt"))
-    //     this.setState({ createdAt })
-
     //when the component mounts, get the first message
     componentDidMount() {
         this.getMessages()
@@ -52,32 +47,35 @@ class Feed extends Component {
         // this.getTime()
     }
 
-    // Function to display data.text .username
 
     render() {
         return (
+            
             <div className="avatar">
                 <p>AVATAR</p>
                 <UserCard />
-            {/* </div> */}
-            {/* // grab avatar pic here */}
-    
-  
-        <div>
-            
-                    {/* <img src={this.avatarLocation}></img> */}
-                    {this.state.feed.map(message =>
-                        <ul className="feed">
-                            <AvatarImage username={message.username} />
-                            <h3>{ message.username }</h3><h5>{message.createdAt}</h5><p>{message.text}</p>
-                        </ul>)}
-                    
-    
-                    {/* {this.state.feed.map(message =>
-                        <li></li>)} */}
-</div>
+
+                {/* // grab avatar pic here */}
+
+
+                {this.state.feed.map(message =>
+                    <ul className="feed">
+                        <AvatarImage username={message.username} />
+                        <h4>{message.username}</h4><h5>{message.createdAt}</h5><p>{message.text}</p>
+                        <button>
+                            👍 Like
+                            </button>
+
+                        {/* // likes: {counta} v  */}
+                        
+                        </ul>) }
+                        
                 </div>
-        )
-    }
-}
+                )
+                }
+               
+
+                
+
+            }
 export default Feed;

@@ -50,7 +50,7 @@ class DataService {
         return this.client.get(this.url + "/users/{props.username}/picture", uploadPicture);
     }
     getMessages() {
-        return this.client.get(this.url + "/messages?limit=20")
+        return this.client.get(this.url + "/messages?limit=8")
     }
    
       
