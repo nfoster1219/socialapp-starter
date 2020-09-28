@@ -50,7 +50,7 @@ class Feed extends Component {
 
     render() {
         return (
-            
+
             <div className="avatar">
                 <p>AVATAR</p>
                 <UserCard />
@@ -66,7 +66,7 @@ class Feed extends Component {
                             👍 Like
                             </button>
                         {/* // likes: {counta}   */}
-                        </ul>) }
+                    </ul>)}
                 {this.state.feed.map(message =>
                     <ul className="feed2">
                         <AvatarImage username={message.username} />
@@ -75,14 +75,10 @@ class Feed extends Component {
                             👍 Like
                             </button>
                         {/* // likes: {counta}   */}
-                        </ul>) }
-                        
-                </div>
-                )
-                }
-               
+                    </ul>)}
 
-                
-
-            }
+            </div>
+        )
+    }
+}
 export default Feed;

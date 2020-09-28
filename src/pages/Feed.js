@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../components/menu/Menu";
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import { userIsAuthenticated } from "../redux/HOCs";
 import SendPost from "../components/sendPost/SendPost";
 
