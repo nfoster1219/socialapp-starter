@@ -65,9 +65,16 @@ class Feed extends Component {
                         <button>
                             👍 Like
                             </button>
-
-                        {/* // likes: {counta} v  */}
-                        
+                        {/* // likes: {counta}   */}
+                        </ul>) }
+                {this.state.feed.map(message =>
+                    <ul className="feed2">
+                        <AvatarImage username={message.username} />
+                        <h4>{message.username}</h4><h5>{message.createdAt}</h5><p>{message.text}</p>
+                        <button className="like">
+                            👍 Like
+                            </button>
+                        {/* // likes: {counta}   */}
                         </ul>) }
                         
                 </div>

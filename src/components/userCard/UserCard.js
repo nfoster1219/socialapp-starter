@@ -45,7 +45,7 @@ class UserCard extends React.Component {
     handleUpdateUser = event => {
         event.preventDefault()
         this.client.updateUser(this.state.user.username, this.state.formData)
-
+//This doesn't work for me when I type on page- error line 47
     }
 
 
