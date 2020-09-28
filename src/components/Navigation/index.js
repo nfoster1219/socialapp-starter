@@ -1,6 +1,7 @@
 import React from 'react'
 import {Pane} from 'evergreen-ui'
 import {NavLink} from 'react-router-dom'
+import {store} from '../../redux'
 import './navigation.css'
 
 const Navigation = ({ location }) => {
@@ -46,7 +47,7 @@ const Navigation = ({ location }) => {
                         </li>
                     ))}
                     <li style={navLink}  key='profile'>
-                        <NavLink activeClassName='active' to={'../profile/' + localStorage.username}>
+                        <NavLink activeClassName='active' to={'../profile/' + store.getState().auth.login.result.username}>
                             Profile
                         </NavLink>
                     </li>
