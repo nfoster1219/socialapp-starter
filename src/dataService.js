@@ -14,14 +14,17 @@ class DataService {
     }
 
     registerUser(userData) {
-        
         return this.client.post(this.url + "/users", userData)
         .then(response => console.log(response))
         .catch(error => console.log(error))
-
     }
-  
-      // Authorization can be done by attaching a header to the Axios config
+
+    getUsers() {
+        return this.client.get(this.url + "/users")
+        .catch(error => console.log(error))
+    }
+
+    // Authorization can be done by attaching a header to the Axios config
     // axios.request(url, data, config)
     // copy the line below and use it as the config parameter
     // {headers: {Authorization: `Bearer ${this.getToken()}`}}
@@ -32,6 +35,22 @@ class DataService {
             .catch(error => console.log(error))
     }
 
+    setUsersPicture(username, picture) {
+        console.log(`${username} ${picture}`)
+        const config= {
+            headers: {
+                     'Access-Control-Allow-Origin': 'https://socialapp-api.herokuapp.com/users/test15/picture',
+                     'content-type': 'multipart/form-data',
+                      Authorization: `Bearer ${this.getToken()}`}
+        }
+        return this.client.put(this.url + `/users/${username}/picture`, picture, config)
+                .then(response => console.log(response))
+                .catch(error => console.log(error))
+    }
+    
+    getMessages() {
+        return this.client.get(this.url + "/messages")
+    }
 
     getUsers() {
         return this.client.get(this.url + "/users")
@@ -42,17 +61,13 @@ class DataService {
         return this.client.get(this.url + "/users", userName);
     }
 
-    getUsersPicture() {
-        return this.client.get(this.url + "/users/{props.username}/picture");
+    getUsersPicture(username) {
+        return this.client.get(this.url + `/users/${username}/picture`);
     }
 
-    setUsersPicture(uploadPicture) {
-        return this.client.get(this.url + "/users/{props.username}/picture", uploadPicture);
+    setUsersPicture(username, picture) {
+        return this.client.get(this.url + `/users/${username}/picture`, picture);
     }
-    getMessages() {
-        return this.client.get(this.url + "/messages?limit=8")
-    }
-   
-      
 }
+
 export default DataService;

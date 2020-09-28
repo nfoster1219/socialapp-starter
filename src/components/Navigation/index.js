@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import './navigation.css'
 
 const Navigation = ({ location }) => {
-    const pages = ['Home', 'Notifications', 'Profile']
+    const pages = ['Feed', 'Notifications']
     const navBar = {
     }
 
@@ -40,11 +40,16 @@ const Navigation = ({ location }) => {
                 <ul style={navFlex}>
                     {pages.map((tab) => (
                         <li style={navLink}  key={tab}>
-                            <NavLink activeClassName="active" to={'./' + tab.toLowerCase()}>
+                            <NavLink activeClassName="active" to={'../' + tab.toLowerCase()}>
                                 {tab}
                             </NavLink>
                         </li>
                     ))}
+                    <li style={navLink}  key='profile'>
+                        <NavLink activeClassName='active' to={'../profile/' + localStorage.username}>
+                            Profile
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </Pane>

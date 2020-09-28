@@ -6,8 +6,6 @@ import { userIsAuthenticated } from "../redux/HOCs";
 // import SendPost from '../components/sendPost/SendPost'
 import Feed from '../components/feed/Feed'
 
-
-
 class Profile extends React.Component {
   render() {
     return (

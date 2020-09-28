@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import Feed from "./pages/Feed";
 
 class App extends React.Component {
   render() {
@@ -16,8 +17,8 @@ class App extends React.Component {
         />
         <Route
           exact
-          path="/home"
-          component={Home}
+          path="/feed"
+          component={Feed}
         />
         <Route
           exact

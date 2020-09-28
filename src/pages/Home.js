@@ -10,7 +10,7 @@ import { Button } from "evergreen-ui"
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showPopup: false };
+    this.state = { showPopup: true };
   }
 
   togglePopup() {
@@ -20,7 +20,6 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <Layout>
         <div className="Home">
           <Menu />
           <h2>Your favorite microblogging platform</h2>
@@ -37,7 +36,6 @@ class Home extends React.Component {
             : null
           }
         </div>
-       </Layout>
     );
   }
 }

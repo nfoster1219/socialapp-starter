@@ -18,10 +18,9 @@ class RegistrationForm extends React.Component {
 
   handleRegistration = e => {
     e.preventDefault();
-    this.client.registerUser(this.state).then(result => {
-      console.log(result)
-      alert(`User ${result.data.user.username} was registered!`)
-    })
+    console.log(this.state)
+    this.client.registerUser(this.state)
+      .then(response=> console.log(response))
     
   };
 
@@ -34,7 +33,7 @@ class RegistrationForm extends React.Component {
     return (
       <div className="RegistrationForm">
       <div className="popup">
-        <form class="formPopup" id="registration-form" onSubmit={this.handleRegistration}>
+        <form className="formPopup" id="registration-form" onSubmit={this.handleRegistration}>
         <label htmlFor="username"><b>Username</b></label>
         <TextInput
             name="username"
@@ -60,7 +59,7 @@ class RegistrationForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-          <Button marginRight={190} appearance="primary" intent="none">Create Profile</Button>
+          <Button marginRight={190} appearance="primary" intent="none" type='submit'>Create Profile</Button>
           <Button marginRight={230} appearance="minimal" intent="danger" onClick={this.props.closePopup}>Close</Button>
         </form>
         {loading && <Spinner name="circle" color="blue" />}

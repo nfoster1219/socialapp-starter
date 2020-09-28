@@ -1,5 +1,5 @@
 import React from "react"
-import { Avatar, Textarea, Button } from "evergreen-ui"
+import { Pane, Avatar, Button, Textarea } from "evergreen-ui"
 import DataService from "../../dataService"
 
 
@@ -23,21 +23,41 @@ class SendPost extends React.Component {
 
 render() {
     return (
-        <div className='flex'>
-          <Avatar isSolid name="Tyler Ammons" size={40} />
+        <Pane
+          display='flex'
+          alignItems='flex-start'
+          justifyContent='flex-start'
+          flexDirection='row'
+          flexWrap='wrap'
+          height='12vh'
+          width='60vw'
+          marginTop='10px'
+          background='tint2'
+        >
+          <Avatar isSolid name="Tyler Ammons" size={40}
+            marginRight='10px'
+            paddingTop='10px'/>
 
           <form id="PostMessage" onSubmit={this.handleMessage}>
 
           <Textarea
-            name="textarea-1"
-            placeholder="Textarea placeholder..."
-            label="Feed Post"
+            name="PostBox"
+            placeholder="What's up?"
+            height='8vh'
+            width='40vw'
             value={this.state.value}
             onChange={e => this.setState({ value: e.target.value })}
+            
           />
-          <Button marginRight={16}>Post</Button>
+          <Button
+            appearance='primary'
+            float='right'
+            height='8vh'
+          > Post
+          </Button>
+
           </form>
-        </div>
+        </Pane>
     )
 }}
 
