@@ -2,7 +2,6 @@ import React from "react";
 import Spinner from "react-spinkit";
 import "./RegistrationForm.css";
 import DataService from "../../dataService"
-import { TextInput, Button } from "evergreen-ui"
 
 
 class RegistrationForm extends React.Component {
@@ -11,17 +10,17 @@ class RegistrationForm extends React.Component {
     this.state = {
       username: "",
       password: "",
-      displayName: ""
+      displayName:""
     };
-    this.client = new DataService();
+
+    this.client = new DataService ();
   }
 
   handleRegistration = e => {
     e.preventDefault();
-    console.log(this.state)
-    this.client.registerUser(this.state)
-      .then(response=> console.log(response))
-    
+   this.client.registerUser(this.state).then(result =>{
+     console.log(result.data)
+   })
   };
 
   handleChange = e => {
@@ -32,39 +31,40 @@ class RegistrationForm extends React.Component {
     const { loading, error } = this.props;
     return (
       <div className="RegistrationForm">
-      <div className="popup">
-        <form className="formPopup" id="registration-form" onSubmit={this.handleRegistration}>
-        <label htmlFor="username"><b>Username</b></label>
-        <TextInput
+       <form id="registration-form" onSubmit={this.handleRegistration}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
             name="username"
-            placeholder="Username"
             autoFocus
             required
             onChange={this.handleChange}
           />
-          <label htmlFor="password"><b>Password</b></label>
-          <TextInput
-            name="password"
-            placeholder="Password"
+
+          <label htmlFor="password">Password</label>
+          <input
             type="password"
-            autoFocus
+            name="password"
             required
             onChange={this.handleChange}
           />
-          <label htmlFor="displayname"><b>Display Name</b></label>
-           <TextInput
+
+      <label htmlFor="displayName">Display Name</label>
+          <input
+            type="text"
             name="displayName"
-            placeholder="Display Name"
-            autoFocus
             required
             onChange={this.handleChange}
           />
-          <Button marginRight={190} appearance="primary" intent="none" type='submit'>Create Profile</Button>
-          <Button marginRight={230} appearance="minimal" intent="danger" onClick={this.props.closePopup}>Close</Button>
+       <br/>
+          
+          <button type="submit" disabled={loading}>
+            Register
+          </button>
+
         </form>
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
-      </div>
       </div>
     );
   }

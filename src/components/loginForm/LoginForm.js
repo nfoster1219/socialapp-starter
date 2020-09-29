@@ -2,8 +2,6 @@ import React from "react";
 import Spinner from "react-spinkit";
 import { withAsyncAction } from "../../redux/HOCs";
 import "./LoginForm.css";
-import { TextInput, Button, EditIcon } from "evergreen-ui"
-
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -16,8 +14,7 @@ class LoginForm extends React.Component {
 
   handleLogin = e => {
     e.preventDefault();
-    this.props.login(this.state)
-    .then(response => localStorage.setItem('username', `${this.state.username}`))
+    this.props.login(this.state);
   };
 
   handleChange = e => {
@@ -29,25 +26,25 @@ class LoginForm extends React.Component {
     return (
       <div className="LoginForm">
         <form id="login-form" onSubmit={this.handleLogin}>
-        <label htmlFor="username"><b>Username</b></label>
-          <TextInput
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
             name="username"
-            placeholder= "Username"
             autoFocus
             required
             onChange={this.handleChange}
           />
-          
-          <label htmlFor="password"><b>Password</b></label>
-          <TextInput
-            name="password"
-            placeholder="Password"
+          <label htmlFor="password">Password</label>
+          <input
             type="password"
-            autoFocus
+            name="password"
             required
             onChange={this.handleChange}
           />
-          <Button marginRight={255} appearance="primary" intent="none">Login</Button>
+          <br/>
+          <button type="submit" disabled={loading}>
+            Login
+          </button>
         </form>
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
