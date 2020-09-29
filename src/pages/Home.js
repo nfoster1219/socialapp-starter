@@ -1,7 +1,7 @@
 import React from "react";
 import LoginForm from "../components/loginForm/LoginForm";
 import Menu from "../components/menu/Menu";
-import Layout from '../components/layout/index'
+import Layout from '../components/Layout/index'
 import { userIsNotAuthenticated } from "../redux/HOCs";
 import RegistrationForm from "../components/registrationForm/RegistrationForm";
 import { Button } from "evergreen-ui"

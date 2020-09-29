@@ -2,34 +2,39 @@
 
 
 
-// import React from "react";
+import React from "react";
+import BackendService from "../../../src/dataService";
+
+class MessageFeed extends React.Component {
+    state = { messages: [] }
 
 
-// class MessageFeed extends React.Component {
-// state = {
-//     messages: []
-// }
-
-
-//     componentDidMount(){
-// new BackendService().getRecentMessages().then(messages => {
-//     this.setState({ messages: [] })
-// })
-//     }
+    componentDidMount() {
+        new BackendService()
+            .getRecentMessages()
+            .then(messages => {
+                console.log(messages)
+                this.setState({ messages })
+            })
+    }
 
 
 
-//     render(){
-//        return(
-//            <div className="MessageFeed">
-//                <h1>MEssage Feed</h1>
-//                <h3>something loading</h3>
-//                <ul>
-//                    <li>{this.state.message[0].text}</li>
-//                </ul>
-//            </div>
-//        ) 
-//     }
-// }
+    render() {
+        if (this.state.messages.length === 0){
+            
+        }
+        return (
+            <div className="MessageFeed">
 
-// export default MessageFeed
+                <h1>MEssage Feed</h1>
+                {/* <h3>something loading...</h3> */}
+                <ul>
+                    <li>{this.state.message[0].text}</li>
+                </ul>
+            </div>
+        )
+    }
+}
+
+export default MessageFeed

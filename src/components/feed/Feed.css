@@ -7,9 +7,10 @@
     list-style-type: none;
     background-color: #ff65a3;
     border-radius: 1em;
+    
 
 }
-.feed2 {
+.user {
    
     position: relative;
     margin-bottom: 20px;
@@ -26,6 +27,8 @@
     padding-left: 5px;
     border: 2px solid darkgreen;
 }
-.like {
+/* .like {
+    text-align: justify;
+
     float: right;
-}
+} */

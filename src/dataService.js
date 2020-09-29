@@ -49,7 +49,10 @@ class DataService {
     }
     
     getMessages() {
-        return this.client.get(this.url + "/messages")
+        return this.client.get(this.url + "/messages?limit=30&offset=30")
+        .then(response => {
+            return response.data.messages
+        })
     }
 
     getUsers() {
@@ -64,6 +67,7 @@ class DataService {
     getUsersPicture(username) {
         return this.client.get(this.url + `/users/${username}/picture`);
     }
+    
 }
 
 export default DataService;

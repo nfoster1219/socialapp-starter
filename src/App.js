@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import Feed from "./pages/Feed";
+import MessageFeed from "././components/feed/Messagefeed(fromDMG)";
 
 class App extends React.Component {
   render() {

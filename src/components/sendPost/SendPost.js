@@ -42,7 +42,7 @@ render() {
 
           <Textarea
             name="PostBox"
-            placeholder="What's up?"
+            placeholder="Tyler says, What's up?"
             height='8vh'
             width='40vw'
             value={this.state.value}
