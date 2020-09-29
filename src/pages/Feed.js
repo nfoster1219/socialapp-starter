@@ -10,12 +10,9 @@ class Profile extends React.Component {
   render() {
     return (
       <Layout>
-        <div>
         <Menu isAuthenticated={this.props.isAuthenticated} />
-        <h2>Feed</h2>
         <SendPost />
         <Feed />
-      </div>
       </Layout>
 
     );

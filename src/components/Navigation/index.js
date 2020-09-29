@@ -12,9 +12,11 @@ const Navigation = ({ location }) => {
     const navFlex = {
         display: 'flex',
         flexDirection: 'column',
+        alignItems:'flex-end',
         fontSize: '32px',
         margin: '0',
-        marginTop: '10px'
+        marginTop: '10px',
+        marginRight: '12px'
     }
     const navLink = {
         color: 'rgba(0,0,0,0.2)',
@@ -30,9 +32,8 @@ const Navigation = ({ location }) => {
             display='flex'
             flexDirection='column'
             height='100vh'
-            width='25vw'
-            minWidth='250px'
-            maxWidth='350px'
+            width='30vw'
+            minWidth='200px'
             boxShadow="inset -1px 0px 8px -1px rgba(0,0,0,0.2)"
             background="tint1"
             borderRight='muted'

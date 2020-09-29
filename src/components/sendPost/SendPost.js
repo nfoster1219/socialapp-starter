@@ -1,5 +1,5 @@
 import React from "react"
-import { Pane, Avatar, Button, Textarea } from "evergreen-ui"
+import { Pane, Button, Textarea } from "evergreen-ui"
 import DataService from "../../dataService"
 import AvatarImage from "../Avatarimage/avatarImage"
 import { store } from "../../redux"
@@ -27,33 +27,39 @@ render() {
     return (
         <Pane
           display='flex'
-          alignItems='flex-start'
+          alignItems='center'
           justifyContent='flex-start'
           flexDirection='row'
           flexWrap='wrap'
           height='12vh'
-          width='60vw'
+          width='100%'
           marginTop='10px'
-          background='teal'
+          border='default'
         >
-          <AvatarImage username={store.getState().auth.login.result.username} />
+          <AvatarImage 
+            username={store.getState().auth.login.result.username}
+            size={64}
+            alignSelf="flex-start"
+          />
 
           <form id="PostMessage" onSubmit={this.handleMessage}>
 
           <Textarea
             name="PostBox"
             placeholder="What's up?"
-            height='8vh'
-            width='40vw'
+            resize='none'
+            height='11vh'
+            width='20vw'
             value={this.state.value}
             onChange={e => this.setState({ value: e.target.value })}
-            
           />
+
           <Button
             appearance='primary'
-            float='right'
-            height='8vh'
-          > Post
+            marginBottom='2vh'
+            marginLeft='10px'
+            alignSelf='flex-end'> 
+            Post
           </Button>
 
           </form>
