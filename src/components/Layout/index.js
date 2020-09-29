@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from '../Navigation'
+import './layout.css'
 import { Pane } from 'evergreen-ui'
 
 // Generates site layout on each page
@@ -15,13 +16,17 @@ const Layout = ({ children, location }) => {
             justifyContent='flex-start'
         >
             <Navigation location={location} />
-            <Pane
-                height='100vh'
-                width='85vw'
+            <Pane 
+                className='disableScrollbar'
+                width='30vw'
+                minWidth='600px'
                 background="tint1"
                 display='flex'
                 flexDirection='column'
                 padding="1em"
+                overflowY="scroll"
+                overflowX="hidden"
+                scrollbarWidth="none"
             >
                 {children}
             </Pane>

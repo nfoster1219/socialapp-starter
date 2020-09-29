@@ -12,13 +12,10 @@ class Profile extends React.Component {
   render() {
     return (
       <Layout>
-        <div className="Profile">
           <Menu isAuthenticated={this.props.isAuthenticated} />
           <h2>Profile</h2>
           <UserCard />
           <Feed />
-          <UploadPicture></UploadPicture>
-        </div>
       </Layout>
       
 
