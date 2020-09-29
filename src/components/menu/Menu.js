@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 import { withAsyncAction } from "../../redux/HOCs";
+import { Button, LogOutIcon } from "evergreen-ui"
+
 
 
 class Menu extends React.Component {
@@ -16,9 +18,8 @@ class Menu extends React.Component {
         <h1>Social App</h1>
         {this.props.isAuthenticated && (
           <div id="menu-links">
-            <Link to="/messagefeed">Message Feed</Link>
             <Link to="/" onClick={this.handleLogout}>
-              Logout
+            <Button iconBefore={LogOutIcon}>Logout</Button>
             </Link>
           </div>
         )}

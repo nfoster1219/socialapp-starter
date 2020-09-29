@@ -1,6 +1,7 @@
 import React from 'react'
 import DataService from "../../dataService"
 import {store} from '../../redux'
+import { FilePicker } from 'evergreen-ui';
 
 function UploadPicture() {
     const client=new DataService();
@@ -35,7 +36,7 @@ function UploadPicture() {
               display: "none"
             }}
           />
-          <div
+          <FilePicker
             style={{
               height: "60px",
               width: "200px",
@@ -50,7 +51,7 @@ function UploadPicture() {
                 height: "100%"
               }}
             />
-          </div>
+          </FilePicker>
           Click to upload Image
         </div>
       );

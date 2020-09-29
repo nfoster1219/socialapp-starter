@@ -61,13 +61,20 @@ class DataService {
     }
 
     getSingleUser(userName) {
-        return this.client.get(this.url + "/users", userName);
+        return this.client.get(this.url + "/users/" + userName);
     }
 
     getUsersPicture(username) {
         return this.client.get(this.url + `/users/${username}/picture`);
     }
-    
+
+    updateUser(user, updateData) {
+        let loginData = JSON.parse(localStorage.getItem("login"));
+        return this.client.patch(this.url + "/users/" + user, updateData, {
+          headers: { Authorization: `Bearer ${loginData.result.token}` },
+        });
+
+      }
 }
 
 export default DataService;

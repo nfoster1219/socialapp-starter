@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from "react-spinkit";
 import { withAsyncAction } from "../../redux/HOCs";
 import "./LoginForm.css";
-import { TextInput, Button, EditIcon } from "evergreen-ui"
+import { TextInput, Button } from "evergreen-ui"
 
 
 class LoginForm extends React.Component {
