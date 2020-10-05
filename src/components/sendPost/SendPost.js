@@ -9,9 +9,7 @@ class SendPost extends React.Component {
   constructor(props) {
   super(props)
   this.state = {value:""}
-  this.client = new DataService();
-    
-  
+  this.client = new DataService(); 
   }
 
   handleMessage = e => {
@@ -23,18 +21,20 @@ class SendPost extends React.Component {
     }
 
 
+
 render() {
     return (
         <Pane
           display='flex'
-          alignItems='center'
+          alignItems='flex-start'
           justifyContent='flex-start'
           flexDirection='row'
           flexWrap='wrap'
-          height='12vh'
+          background='tint2'
+          height='110px'
           width='100%'
-          marginTop='10px'
           border='default'
+    
         >
           <AvatarImage 
             username={store.getState().auth.login.result.username}
@@ -42,23 +42,23 @@ render() {
             alignSelf="flex-start"
           />
 
-          <form id="PostMessage" onSubmit={this.handleMessage}>
+          <form id="PostMessage" style={{height: '100px'}}onSubmit={this.handleMessage}>
 
           <Textarea
             name="PostBox"
             placeholder="What's up?"
             resize='none'
-            height='11vh'
-            width='20vw'
+            height='100px'
+            width='400px'
             value={this.state.value}
             onChange={e => this.setState({ value: e.target.value })}
           />
 
           <Button
-            appearance='primary'
-            marginBottom='2vh'
+            appearance='primary' 
             marginLeft='10px'
-            alignSelf='flex-end'> 
+            bottom="10px"
+          > 
             Post
           </Button>
 

@@ -5,7 +5,7 @@ import {store} from '../../redux'
 import './navigation.css'
 
 const Navigation = ({ location }) => {
-    const pages = ['Feed', 'Notifications']
+    const pages = ['Feed']
     const navBar = {
     }
 

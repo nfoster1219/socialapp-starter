@@ -10,7 +10,6 @@ function UploadPicture() {
 
     // Assume upload picture is on self profile
     const username = store.getState().auth.login.result.username
-    console.log(username)
     const handleImageUpload = e => {
         const [file] = e.target.files;
         const picture = new FormData()

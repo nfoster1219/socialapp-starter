@@ -5,15 +5,15 @@
   
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 1em;
+  align-items: flex-start;
+  padding: 0;
   border-radius: 1em;
   width: 100%;
 }
 
 #menu-links {
   display: flex;
-  padding-left: 1em;
+  padding-left: 0;
 }
 
 #menu-links a {
@@ -26,10 +26,13 @@
 
 ul,li{
   list-style:none;
+  padding: 0;
+  margin: 0;
 }
 
 ul{
   overflow:hidden;
+  margin: 0;
 }
 
 
@@ -39,14 +42,11 @@ ul{
   text-decoration:none;
   color:#000;
   background:#ffc;
-  display:absolute;
-  height:150px;
+  height:60px;
   width:150px;
   padding:1em;
-  
-  float:left;
+  margin-top: 0;
   font-weight:bold;
-  padding-bottom:10px;
   font-family: 'Caveat', cursive;
   font-size:300%;
   text-decoration:none;
