@@ -43,6 +43,7 @@ class LoginForm extends React.Component {
             name="password"
             placeholder="Password"
             type="password"
+            marginBottom="10px"
             autoFocus
             required
             onChange={this.handleChange}

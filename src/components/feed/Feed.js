@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 //import our service
 import DataService from "../../dataService";
-import Likes from "../Likes";
-import UserCard from "../userCard/UserCard";
-import AvatarImage from "../Avatarimage/avatarImage";
-import "../feed/Feed.css";
+import Messages from '../Messages/Messages'
+import SendPost from '../SendPost/SendPost'
+import './Feed.css';
 import {Pane} from 'evergreen-ui'
+import { store } from "../../redux";
 // import Scroll from '../feed/Scroll'
 
 class Feed extends Component {
@@ -14,55 +14,95 @@ class Feed extends Component {
   constructor(props) {
     super(props);
     this.client = new DataService();
+    this.filterFlag = false
     this.state = {
       feed: [],
-      userfeed: [],
-      createdAt: "",
-      likes: [],
+      loading: false,
+      page: 0,
+      prevY: 0
     };
+  }
+  filterMessages() {
+    this.setState({
+      feed: this.state.feed.filter(message => 
+        message.username === window.location.pathname.split('/')[2])
+      // message.username === store.getState().auth.login.result.username)
+      })
   }
 
   //get a new message from the API and add it to the data object in state
-  getMessages() {
-    return this.client.getMessages().then((result) => {
+  getMessages(number) {
+    this.setState({ loading: true })
+    this.filterFlag = this.props.flag
+    return this.client.getMessages(number)
+    .then((result) => {
       const data = result.data.messages;
       this.setState({ feed: data });
+      if(this.filterFlag) {
+        this.filterMessages()
+      }
+      this.setState({ loading: false})
     });
   }
 
-  getUserMessages = () => {
-    //get all message and filter
-    const loginData = JSON.parse(localStorage.getItem("login"));
 
-    this.client.getMessages().then((result) => {
-      const userData = result.data.messages.filter(
-        (messages) => loginData.result.username === messages.username
-      );
-      this.setState({ userfeed: userData });
-      console.log(result.data.messages);
-    });
-  };
+  handleObserver(entities, observer) {
+    const y = entities[0].boundingClientRect.y;
+    if (this.state.prevY > y) {
+      this.getMessages(this.state.feed.length + 20)
+      this.setState({ page: this.state.page + 1})
+    }
+    this.setState({prevY: y})
+  }
 
   //when the component mounts, get the first message
   componentDidMount() {
-    this.getMessages();
-    this.getUserMessages();
+    if(this.filterFlag) {
+      this.getMessages();
+    }
+    this.getMessages(20);
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+    this.observer = new IntersectionObserver(
+      this.handleObserver.bind(this),
+      options
+    )
+    this.observer.observe(this.loadingRef)
   }
 
+
+
+
+
   render() {
+      // Additional css
+      const loadingCSS = {
+        height: "100px",
+        margin: "30px"
+      };
+  
+      // To change the loading icon behavior
+      const loadingTextCSS = { display: this.state.loading ? "block" : "none" };
+      let post = <SendPost feed={this.state.feed} update={this.getMessages} />
+      if(this.filterFlag) {
+        post = null
+      } else {
+        post = <SendPost feed={this.state.feed} update={this.getMessages} />
+      }
     return (
-      // <div className="avatar">
-      //     <p>AVATAR</p>
       <Pane>
-        {this.state.feed.map((message) => (
-          <div className="feed2" key={message.id}>
-            <AvatarImage username={message.username} />
-            <h4>{message.username}</h4>
-            <h5>{message.createdAt}</h5>
-            <p>{message.text}</p>
-            <Likes message={message} />
-          </div>
-        ))}
+        {post}
+        <Messages feed={this.state.feed} />
+        <div
+          ref={loadingRef => (this.loadingRef = loadingRef)}
+          style={loadingCSS}
+        >
+          <span style={loadingTextCSS}>Loading...</span>
+        </div>
       </Pane>
     );
   }

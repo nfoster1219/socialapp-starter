@@ -56,8 +56,8 @@ class DataService {
       .catch((error) => console.log(error));
   }
 
-  getMessages() {
-    return this.client.get(this.url + "/messages?limit=20");
+  getMessages(num) {
+    return this.client.get(`${this.url}/messages?limit=${num}`);
   }
 
   getUsers() {

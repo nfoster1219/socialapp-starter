@@ -3,9 +3,7 @@ import Menu from "../components/menu/Menu";
 import UserCard from "../components/userCard/UserCard";
 import Layout from '../components/Layout'
 import { userIsAuthenticated } from "../redux/HOCs";
-import SendPost from '../components/sendPost/SendPost'
-import Feed from '../components/feed/Feed'
-import UploadPicture from '../components/uploadPicture/UploadPicture'
+import Feed from '../components/Feed/Feed'
 
 
 class Profile extends React.Component {
@@ -15,7 +13,7 @@ class Profile extends React.Component {
           <Menu isAuthenticated={this.props.isAuthenticated} />
           <h2>Profile</h2>
           <UserCard />
-          <Feed />
+          <Feed flag={true}/>
       </Layout>
       
 

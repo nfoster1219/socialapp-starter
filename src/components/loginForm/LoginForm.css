@@ -4,3 +4,8 @@
   max-width: 20em;
 }
 
+
+.LoginForm label {
+  line-height: 1.8;
+}
+

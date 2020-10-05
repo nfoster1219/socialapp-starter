@@ -1,9 +1,9 @@
 import React from "react";
 import Menu from "../components/menu/Menu";
 import Layout from '../components/Layout'
-import Feed from '../components/feed/Feed'
+import Feed from '../components/Feed/Feed'
 import { userIsAuthenticated } from "../redux/HOCs";
-import SendPost from "../components/sendPost/SendPost";
+import SendPost from "../components/SendPost/SendPost";
 
 
 class Profile extends React.Component {
@@ -11,7 +11,6 @@ class Profile extends React.Component {
     return (
       <Layout>
         <Menu isAuthenticated={this.props.isAuthenticated} />
-        <SendPost />
         <Feed />
       </Layout>
 

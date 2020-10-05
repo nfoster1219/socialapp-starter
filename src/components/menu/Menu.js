@@ -23,7 +23,12 @@ class Menu extends React.Component {
         {this.props.isAuthenticated && (
           <div id="menu-links">
             <Link to="/" onClick={this.handleLogout}>
-              <Button iconBefore={LogOutIcon}>Logout</Button>
+              <Button
+                iconBefore={LogOutIcon}
+                justifySelf="flex-start"
+                marginBottom="15vh">
+                  Logout
+                </Button>
             </Link>
           </div>
         )}

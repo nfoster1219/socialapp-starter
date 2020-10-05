@@ -20,7 +20,7 @@ const Layout = ({ children, location }) => {
                 className='disableScrollbar'
                 width='30vw'
                 minWidth='600px'
-                background="tint1"
+                background="#f0f8ff"
                 display='flex'
                 flexDirection='column'
                 padding="1em"
